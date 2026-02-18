@@ -1,0 +1,81 @@
+# V-CUE Default Configuration
+
+# LLM settings
+llm:
+  # Options: "openai", "dashscope" (for Qwen), "deepseek", "local"
+  provider: "openai"
+  model_name: "gpt-3.5-turbo"
+  api_key: ""
+  base_url: ""
+  temperature: 0.0
+  max_tokens: 2048
+
+# LLM-reasoning settings (for reasoning-enhanced models)
+llm_reasoning:
+  provider: "deepseek"
+  model_name: "deepseek-reasoner"
+  api_key: ""
+  base_url: "https://api.deepseek.com/v1"
+  temperature: 0.0
+  max_tokens: 4096
+
+# Vision-Language Model settings
+vlm:
+  provider: "dashscope"
+  model_name: "qwen2.5-vl-72b-instruct"
+  api_key: ""
+  base_url: ""
+  temperature: 0.0
+  max_tokens: 2048
+
+# Image generation settings (Stable Diffusion)
+image_generation:
+  model_id: "stabilityai/stable-diffusion-2-1"
+  guidance_scale: 7.5
+  num_inference_steps: 30
+  height: 512
+  width: 512
+  use_ema: true
+  device: "cuda"
+  seed: 42
+
+# Image captioning settings
+image_captioner:
+  provider: "dashscope"
+  model_name: "qwen2.5-vl-72b-instruct"
+  api_key: ""
+  base_url: ""
+
+# Uncertainty Detection settings
+uncertainty_detection:
+  enabled: true
+  judge_provider: "openai"
+  judge_model: "gpt-4o"
+  judge_api_key: ""
+  judge_base_url: ""
+
+# CARE evaluation settings (LLM-as-Judge)
+care_judge:
+  provider: "openai"
+  model_name: "gpt-4o-2024-05-13"
+  api_key: ""
+  base_url: ""
+
+# V-CUE pipeline settings
+pipeline:
+  # "text", "reasoning", "vl"
+  system_type: "text"
+  save_generated_images: true
+  image_output_dir: "output/images"
+
+# Evaluation settings
+evaluation:
+  num_runs: 5
+  output_dir: "output/results"
+  culturalbench_dataset: "kellycyy/CulturalBench"
+  care_dataset: "geyang627/CARE-eval"
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "output/vcue.log"
